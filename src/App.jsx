@@ -41,12 +41,20 @@ function App() {
       visited: [],
     }));
   };
-  const addVisited= (card)=>{
-    setPlayer((prev)=>({
-      ...prev, visited: prev.visited, card 
-    }))
-    alert("added: "+card);
-  }
+  const addVisited = (card) => {
+    for (let cards of player.visited) {
+      if (card===cards){
+        alert("Game Over");
+        return;
+      }
+    }
+    setPlayer((prev) => ({
+      ...prev,
+      visited: [...prev.visited, card]
+
+    }));
+    alert("added: " + card);
+  };
 
   return (
     <div>
@@ -70,7 +78,7 @@ function App() {
               key={i}
               src={url}
               alt="gif"
-              style={{ width: "100%", borderRadius: "8px", cursor:"pointer" }}
+              style={{ width: "100%", borderRadius: "8px", cursor: "pointer" }}
               onClick={() => addVisited(url)}
             />
           ))}

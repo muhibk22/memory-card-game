@@ -41,6 +41,12 @@ function App() {
       visited: [],
     }));
   };
+  const addVisited= (card)=>{
+    setPlayer((prev)=>({
+      ...prev, visited: prev.visited, card 
+    }))
+    alert("added: "+card);
+  }
 
   return (
     <div>
@@ -64,7 +70,8 @@ function App() {
               key={i}
               src={url}
               alt="gif"
-              style={{ width: "100%", borderRadius: "8px" }}
+              style={{ width: "100%", borderRadius: "8px", cursor:"pointer" }}
+              onClick={() => addVisited(url)}
             />
           ))}
         </div>
